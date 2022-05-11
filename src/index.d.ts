@@ -26,6 +26,6 @@ export { Deferrable } from './deferrable';
  * Type helper for making certain fields of an object optional. This is helpful
  * for creating the `CreationAttributes` from your `Attributes` for a Model.
  */
-export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+export type Optional<T, K extends keyof T> = T extends any ? (Omit<T, K> & Partial<Pick<T, K>>) : never;
 
 export type PartlyRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
